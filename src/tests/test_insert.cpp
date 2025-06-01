@@ -5,9 +5,13 @@
 
 TEST(test_insert, AddFunction)
 {
-    SortError error = SE_SUCCESS;
+    Sorter* sorter = new Sorter();
 
-    // add your test here
+    SortData<float, std::vector> data;
+    int dsize = 128 + rand() % 100;
+    for (unsigned i = 0; i < dsize; i++) data.add(float(rand() % 1024) / 4096);
+
+    auto error = sorter->sort<float, std::vector, STT_INSERT>(data);
 
     ASSERT_EQ(error, SE_SUCCESS);
 }
